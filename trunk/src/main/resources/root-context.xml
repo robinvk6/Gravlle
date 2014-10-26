@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd ">
+
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<context:spring-configured />
+	<context:annotation-config/> 
+	<context:property-placeholder location="classpath:system.properties" />
+	
+
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+	destroy-method="close"
+	p:driverClassName="${jdbc.driverClassName.localhost.dev}"
+	p:url="${jdbc.databaseurl.localhost.dev}"
+	p:username="${jdbc.username.localhost.dev}"
+	p:password="${jdbc.password.localhost.dev}"
+	p:testOnBorrow="true"
+	p:validationQuery="SELECT 1"
+	p:poolPreparedStatements="true"
+	p:removeAbandoned="true"
+	p:removeAbandonedTimeout="120" />
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="com.gravlle.portal" />
+        <property name="hibernateProperties">
+            <props>
+			<prop key="hibernate.dialect">${jdbc.dialect.localhost.dev}</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean name="openSessionInViewInterceptor"
+        class="org.springframework.orm.hibernate4.support.OpenSessionInViewInterceptor">
+        <property name="sessionFactory" >
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    
+    <bean id="persistenceExceptionTranslationPostProcessor" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+</beans>

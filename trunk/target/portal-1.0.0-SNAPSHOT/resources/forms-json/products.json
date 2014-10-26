@@ -1,0 +1,1089 @@
+{
+    "specificUsesForProduct": {
+        "field": "specificUsesForProduct",
+        "required": false,
+        "type": "java.util.List",
+        "enumerated": false,
+        "enumValues": null,
+        "list": true,
+        "newTree": false,
+        "treeValue": null,
+        "value": null
+    },
+    "wattage": {
+        "field": "wattage",
+        "required": false,
+        "type": "com.gravlle.amazon.product.domain.WattageDimension",
+        "enumerated": false,
+        "enumValues": null,
+        "list": false,
+        "newTree": true,
+        "treeValue": {
+            "value": {
+                "field": "value",
+                "required": false,
+                "type": "java.math.BigDecimal",
+                "enumerated": false,
+                "enumValues": null,
+                "list": false,
+                "newTree": false,
+                "treeValue": null,
+                "value": null
+            },
+            "unitOfMeasure": {
+                "field": "unitOfMeasure",
+                "required": true,
+                "type": "com.gravlle.amazon.product.domain.WattageUnitOfMeasure",
+                "enumerated": true,
+                "enumValues": [
+                    "WATTS",
+                    "KILOWATTS"
+                ],
+                "list": false,
+                "newTree": false,
+                "treeValue": null,
+                "value": null
+            }
+        },
+        "value": null
+    },
+    "lithiumBatteryPackaging": {
+        "field": "lithiumBatteryPackaging",
+        "required": false,
+        "type": "java.lang.String",
+        "enumerated": false,
+        "enumValues": null,
+        "list": false,
+        "newTree": false,
+        "treeValue": null,
+        "value": null
+    },
+    "medicineClassification": {
+        "field": "medicineClassification",
+        "required": false,
+        "type": "java.lang.String",
+        "enumerated": false,
+        "enumValues": null,
+        "list": false,
+        "newTree": false,
+        "treeValue": null,
+        "value": null
+    },
+    "numberOfLithiumIonCells": {
+        "field": "numberOfLithiumIonCells",
+        "required": false,
+        "type": "java.math.BigInteger",
+        "enumerated": false,
+        "enumValues": null,
+        "list": false,
+        "newTree": false,
+        "treeValue": null,
+        "value": null
+    },
+    "lithiumBatteryWeight": {
+        "field": "lithiumBatteryWeight",
+        "required": false,
+        "type": "java.math.BigDecimal",
+        "enumerated": false,
+        "enumValues": null,
+        "list": false,
+        "newTree": false,
+        "treeValue": null,
+        "value": null
+    },
+    "lithiumBatteryEnergyContent": {
+        "field": "lithiumBatteryEnergyContent",
+        "required": false,
+        "type": "java.math.BigDecimal",
+        "enumerated": false,
+        "enumValues": null,
+        "list": false,
+        "newTree": false,
+        "treeValue": null,
+        "value": null
+    },
+    "productType": {
+        "field": "productType",
+        "required": true,
+        "type": "com.gravlle.amazon.product.domain.Beauty$ProductType",
+        "enumerated": false,
+        "enumValues": null,
+        "list": false,
+        "newTree": true,
+        "treeValue": {
+            "beautyMisc": {
+                "field": "beautyMisc",
+                "required": false,
+                "type": "com.gravlle.amazon.product.domain.BeautyMisc",
+                "enumerated": false,
+                "enumValues": null,
+                "list": false,
+                "newTree": true,
+                "treeValue": {
+                    "hairType": {
+                        "field": "hairType",
+                        "required": false,
+                        "type": "java.util.List",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": true,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "displayLength": {
+                        "field": "displayLength",
+                        "required": false,
+                        "type": "com.gravlle.amazon.product.domain.LengthDimension",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": true,
+                        "treeValue": {
+                            "value": {
+                                "field": "value",
+                                "required": false,
+                                "type": "java.math.BigDecimal",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            },
+                            "unitOfMeasure": {
+                                "field": "unitOfMeasure",
+                                "required": true,
+                                "type": "com.gravlle.amazon.product.domain.LengthUnitOfMeasure",
+                                "enumerated": true,
+                                "enumValues": [
+                                    "MM",
+                                    "CM",
+                                    "M",
+                                    "IN",
+                                    "FT",
+                                    "INCHES",
+                                    "FEET",
+                                    "METERS",
+                                    "DECIMETERS",
+                                    "CENTIMETERS",
+                                    "MILLIMETERS",
+                                    "MICROMETERS",
+                                    "NANOMETERS",
+                                    "PICOMETERS"
+                                ],
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            }
+                        },
+                        "value": null
+                    },
+                    "count": {
+                        "field": "count",
+                        "required": false,
+                        "type": "java.math.BigInteger",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "skinTone": {
+                        "field": "skinTone",
+                        "required": false,
+                        "type": "java.util.List",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": true,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "sizeMap": {
+                        "field": "sizeMap",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "skinType": {
+                        "field": "skinType",
+                        "required": false,
+                        "type": "java.util.List",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": true,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "manufacturerWarrantyType": {
+                        "field": "manufacturerWarrantyType",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "includedComponents": {
+                        "field": "includedComponents",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "directions": {
+                        "field": "directions",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "ingredients": {
+                        "field": "ingredients",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "unitCount": {
+                        "field": "unitCount",
+                        "required": false,
+                        "type": "com.gravlle.amazon.product.domain.BeautyMisc$UnitCount",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": true,
+                        "treeValue": {
+                            "value": {
+                                "field": "value",
+                                "required": false,
+                                "type": "java.math.BigInteger",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            },
+                            "unitOfMeasure": {
+                                "field": "unitOfMeasure",
+                                "required": true,
+                                "type": "java.lang.String",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            }
+                        },
+                        "value": null
+                    },
+                    "finishType": {
+                        "field": "finishType",
+                        "required": false,
+                        "type": "java.util.List",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": true,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "battery": {
+                        "field": "battery",
+                        "required": false,
+                        "type": "com.gravlle.amazon.product.domain.Battery",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": true,
+                        "treeValue": {
+                            "areBatteriesRequired": {
+                                "field": "areBatteriesRequired",
+                                "required": false,
+                                "type": "java.lang.Boolean",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            },
+                            "areBatteriesIncluded": {
+                                "field": "areBatteriesIncluded",
+                                "required": false,
+                                "type": "java.lang.Boolean",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            },
+                            "batterySubgroup": {
+                                "field": "batterySubgroup",
+                                "required": false,
+                                "type": "java.util.List",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": true,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            }
+                        },
+                        "value": null
+                    },
+                    "materialType": {
+                        "field": "materialType",
+                        "required": false,
+                        "type": "java.util.List",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": true,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "brandRegionOfOrigin": {
+                        "field": "brandRegionOfOrigin",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "warnings": {
+                        "field": "warnings",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "countryOfOrigin": {
+                        "field": "countryOfOrigin",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "batteryPower": {
+                        "field": "batteryPower",
+                        "required": false,
+                        "type": "com.gravlle.amazon.product.domain.BatteryPowerIntegerDimension",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": true,
+                        "treeValue": {
+                            "value": {
+                                "field": "value",
+                                "required": false,
+                                "type": "java.math.BigInteger",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            },
+                            "unitOfMeasure": {
+                                "field": "unitOfMeasure",
+                                "required": true,
+                                "type": "com.gravlle.amazon.product.domain.BatteryPowerUnitOfMeasure",
+                                "enumerated": true,
+                                "enumValues": [
+                                    "MILLIAMP_HOURS",
+                                    "AMP_HOURS",
+                                    "VOLT_AMPERES",
+                                    "WATT_HOURS"
+                                ],
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            }
+                        },
+                        "value": null
+                    },
+                    "patternName": {
+                        "field": "patternName",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "specialFeatures": {
+                        "field": "specialFeatures",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "sellerWarrantyDescription": {
+                        "field": "sellerWarrantyDescription",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "batteryChargeTime": {
+                        "field": "batteryChargeTime",
+                        "required": false,
+                        "type": "java.math.BigDecimal",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "batteryFormFactor": {
+                        "field": "batteryFormFactor",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "numberOfItems": {
+                        "field": "numberOfItems",
+                        "required": false,
+                        "type": "java.math.BigInteger",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "displayVolume": {
+                        "field": "displayVolume",
+                        "required": false,
+                        "type": "com.gravlle.amazon.product.domain.VolumeDimension",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": true,
+                        "treeValue": {
+                            "value": {
+                                "field": "value",
+                                "required": false,
+                                "type": "java.math.BigDecimal",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            },
+                            "unitOfMeasure": {
+                                "field": "unitOfMeasure",
+                                "required": true,
+                                "type": "com.gravlle.amazon.product.domain.VolumeUnitOfMeasure",
+                                "enumerated": true,
+                                "enumValues": [
+                                    "CUBIC_CM",
+                                    "CUBIC_FT",
+                                    "CUBIC_IN",
+                                    "CUBIC_M",
+                                    "CUBIC_YD",
+                                    "CUP",
+                                    "FLUID_OZ",
+                                    "GALLON",
+                                    "LITER",
+                                    "MILLILITER",
+                                    "OUNCE",
+                                    "PINT",
+                                    "QUART",
+                                    "LITERS",
+                                    "DECILITERS",
+                                    "CENTILITERS",
+                                    "MILLILITERS",
+                                    "MICROLITERS",
+                                    "NANOLITERS",
+                                    "PICOLITERS"
+                                ],
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            }
+                        },
+                        "value": null
+                    },
+                    "powerSource": {
+                        "field": "powerSource",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "flavor": {
+                        "field": "flavor",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "mfrWarrantyDescriptionParts": {
+                        "field": "mfrWarrantyDescriptionParts",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "batteryAverageLifeStandby": {
+                        "field": "batteryAverageLifeStandby",
+                        "required": false,
+                        "type": "java.math.BigDecimal",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "isAdultProduct": {
+                        "field": "isAdultProduct",
+                        "required": false,
+                        "type": "java.lang.Boolean",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "itemSpecialty": {
+                        "field": "itemSpecialty",
+                        "required": false,
+                        "type": "java.util.List",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": true,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "batteryAverageLife": {
+                        "field": "batteryAverageLife",
+                        "required": false,
+                        "type": "java.math.BigDecimal",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "indications": {
+                        "field": "indications",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "displayWeight": {
+                        "field": "displayWeight",
+                        "required": false,
+                        "type": "com.gravlle.amazon.product.domain.WeightDimension",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": true,
+                        "treeValue": {
+                            "value": {
+                                "field": "value",
+                                "required": false,
+                                "type": "java.math.BigDecimal",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            },
+                            "unitOfMeasure": {
+                                "field": "unitOfMeasure",
+                                "required": true,
+                                "type": "com.gravlle.amazon.product.domain.WeightUnitOfMeasure",
+                                "enumerated": true,
+                                "enumValues": [
+                                    "GR",
+                                    "KG",
+                                    "OZ",
+                                    "LB",
+                                    "MG"
+                                ],
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            }
+                        },
+                        "value": null
+                    },
+                    "modelName": {
+                        "field": "modelName",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "targetGender": {
+                        "field": "targetGender",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "coverage": {
+                        "field": "coverage",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "itemPackageQuantity": {
+                        "field": "itemPackageQuantity",
+                        "required": false,
+                        "type": "java.math.BigInteger",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "itemForm": {
+                        "field": "itemForm",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "targetAudienceBase": {
+                        "field": "targetAudienceBase",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "variationData": {
+                        "field": "variationData",
+                        "required": false,
+                        "type": "com.gravlle.amazon.product.domain.BeautyMisc$VariationData",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": true,
+                        "treeValue": {
+                            "variationTheme": {
+                                "field": "variationTheme",
+                                "required": false,
+                                "type": "java.lang.String",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            },
+                            "color": {
+                                "field": "color",
+                                "required": false,
+                                "type": "java.lang.String",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            },
+                            "parentage": {
+                                "field": "parentage",
+                                "required": true,
+                                "type": "java.lang.String",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            },
+                            "capacity": {
+                                "field": "capacity",
+                                "required": false,
+                                "type": "com.gravlle.amazon.product.domain.VolumeDimension",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": false,
+                                "newTree": true,
+                                "treeValue": {
+                                    "value": {
+                                        "field": "value",
+                                        "required": false,
+                                        "type": "java.math.BigDecimal",
+                                        "enumerated": false,
+                                        "enumValues": null,
+                                        "list": false,
+                                        "newTree": false,
+                                        "treeValue": null,
+                                        "value": null
+                                    },
+                                    "unitOfMeasure": {
+                                        "field": "unitOfMeasure",
+                                        "required": true,
+                                        "type": "com.gravlle.amazon.product.domain.VolumeUnitOfMeasure",
+                                        "enumerated": true,
+                                        "enumValues": [
+                                            "CUBIC_CM",
+                                            "CUBIC_FT",
+                                            "CUBIC_IN",
+                                            "CUBIC_M",
+                                            "CUBIC_YD",
+                                            "CUP",
+                                            "FLUID_OZ",
+                                            "GALLON",
+                                            "LITER",
+                                            "MILLILITER",
+                                            "OUNCE",
+                                            "PINT",
+                                            "QUART",
+                                            "LITERS",
+                                            "DECILITERS",
+                                            "CENTILITERS",
+                                            "MILLILITERS",
+                                            "MICROLITERS",
+                                            "NANOLITERS",
+                                            "PICOLITERS"
+                                        ],
+                                        "list": false,
+                                        "newTree": false,
+                                        "treeValue": null,
+                                        "value": null
+                                    }
+                                },
+                                "value": null
+                            },
+                            "scent": {
+                                "field": "scent",
+                                "required": false,
+                                "type": "java.lang.String",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            },
+                            "colorMap": {
+                                "field": "colorMap",
+                                "required": false,
+                                "type": "java.lang.String",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            },
+                            "size": {
+                                "field": "size",
+                                "required": false,
+                                "type": "java.lang.String",
+                                "enumerated": false,
+                                "enumValues": null,
+                                "list": false,
+                                "newTree": false,
+                                "treeValue": null,
+                                "value": null
+                            }
+                        },
+                        "value": null
+                    },
+                    "batteryCellComposition": {
+                        "field": "batteryCellComposition",
+                        "required": false,
+                        "type": "com.gravlle.amazon.product.domain.BatteryCellTypeValues",
+                        "enumerated": true,
+                        "enumValues": [
+                            "NI_CAD",
+                            "NI_MH",
+                            "ALKALINE",
+                            "ALUMINUM_OXYGEN",
+                            "LEAD_ACID",
+                            "LEAD_CALCIUM",
+                            "LITHIUM",
+                            "LITHIUM_ION",
+                            "LITHIUM_MANGANESE_DIOXIDE",
+                            "LITHIUM_METAL",
+                            "LITHIUM_POLYMER",
+                            "MANGANESE",
+                            "POLYMER",
+                            "SILVER_OXIDE",
+                            "ZINC"
+                        ],
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "batteryDescription": {
+                        "field": "batteryDescription",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    },
+                    "mfrWarrantyDescriptionLabor": {
+                        "field": "mfrWarrantyDescriptionLabor",
+                        "required": false,
+                        "type": "java.lang.String",
+                        "enumerated": false,
+                        "enumValues": null,
+                        "list": false,
+                        "newTree": false,
+                        "treeValue": null,
+                        "value": null
+                    }
+                },
+                "value": null
+            }
+        },
+        "value": null
+    },
+    "sunProtection": {
+        "field": "sunProtection",
+        "required": false,
+        "type": "com.gravlle.amazon.product.domain.SunProtectionDimension",
+        "enumerated": false,
+        "enumValues": null,
+        "list": false,
+        "newTree": true,
+        "treeValue": {
+            "value": {
+                "field": "value",
+                "required": false,
+                "type": "java.math.BigInteger",
+                "enumerated": false,
+                "enumValues": null,
+                "list": false,
+                "newTree": false,
+                "treeValue": null,
+                "value": null
+            },
+            "unitOfMeasure": {
+                "field": "unitOfMeasure",
+                "required": true,
+                "type": "com.gravlle.amazon.product.domain.SunProtectionUnitOfMeasure",
+                "enumerated": true,
+                "enumValues": [
+                    "SUN_PROTECTION_FACTOR"
+                ],
+                "list": false,
+                "newTree": false,
+                "treeValue": null,
+                "value": null
+            }
+        },
+        "value": null
+    },
+    "batteryTypeLithiumIon": {
+        "field": "batteryTypeLithiumIon",
+        "required": false,
+        "type": "java.math.BigInteger",
+        "enumerated": false,
+        "enumValues": null,
+        "list": false,
+        "newTree": false,
+        "treeValue": null,
+        "value": null
+    },
+    "certification": {
+        "field": "certification",
+        "required": false,
+        "type": "java.util.List",
+        "enumerated": false,
+        "enumValues": null,
+        "list": true,
+        "newTree": false,
+        "treeValue": null,
+        "value": null
+    },
+    "batteryTypeLithiumMetal": {
+        "field": "batteryTypeLithiumMetal",
+        "required": false,
+        "type": "java.math.BigInteger",
+        "enumerated": false,
+        "enumValues": null,
+        "list": false,
+        "newTree": false,
+        "treeValue": null,
+        "value": null
+    },
+    "lithiumBatteryVoltage": {
+        "field": "lithiumBatteryVoltage",
+        "required": false,
+        "type": "java.math.BigDecimal",
+        "enumerated": false,
+        "enumValues": null,
+        "list": false,
+        "newTree": false,
+        "treeValue": null,
+        "value": null
+    },
+    "voltage": {
+        "field": "voltage",
+        "required": false,
+        "type": "com.gravlle.amazon.product.domain.VoltageDecimalDimension",
+        "enumerated": false,
+        "enumValues": null,
+        "list": false,
+        "newTree": true,
+        "treeValue": {
+            "value": {
+                "field": "value",
+                "required": false,
+                "type": "java.math.BigDecimal",
+                "enumerated": false,
+                "enumValues": null,
+                "list": false,
+                "newTree": false,
+                "treeValue": null,
+                "value": null
+            },
+            "unitOfMeasure": {
+                "field": "unitOfMeasure",
+                "required": true,
+                "type": "com.gravlle.amazon.product.domain.VoltageUnitOfMeasure",
+                "enumerated": true,
+                "enumValues": [
+                    "VOLTS",
+                    "MILLIVOLTS",
+                    "MICROVOLTS",
+                    "NANOVOLTS",
+                    "KILOVOLTS"
+                ],
+                "list": false,
+                "newTree": false,
+                "treeValue": null,
+                "value": null
+            }
+        },
+        "value": null
+    },
+    "numberOfLithiumMetalCells": {
+        "field": "numberOfLithiumMetalCells",
+        "required": false,
+        "type": "java.math.BigInteger",
+        "enumerated": false,
+        "enumValues": null,
+        "list": false,
+        "newTree": false,
+        "treeValue": null,
+        "value": null
+    },
+    "plugType": {
+        "field": "plugType",
+        "required": false,
+        "type": "java.lang.String",
+        "enumerated": false,
+        "enumValues": null,
+        "list": false,
+        "newTree": false,
+        "treeValue": null,
+        "value": null
+    }
+}
