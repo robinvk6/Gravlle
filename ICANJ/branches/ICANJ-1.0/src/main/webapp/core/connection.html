@@ -1,0 +1,109 @@
+<html>
+<head>
+<style>
+body {
+        font-family: arial;
+        font-size: 10px;
+}
+</style>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/json/json2.js"></script>
+<script type="text/javascript" src="js/nirvana.js"></script>
+<script type="text/javascript" src="js/coreservices.js"></script>
+<script type='text/javascript'>
+
+var JPMM_MESSAGING_nSession = null;
+var JPMM_MESSAGING_sessionStartTime = null;
+var timeoutVar;
+var sessionTimeout;
+Nirvana.Utils.Logger.setLogger(myLogFunction);
+
+function myLogFunction(debugMessage) {
+	parent.JPMM_MESSAGING.JPMMLogger(debugMessage);
+	}
+
+function getUrlParam(sname)
+{
+        var params = location.search.substr(location.search.indexOf("?")+1);
+        var sval = null;
+        params = params.split("&");
+    // split param and value into individual pieces
+        for (var i=0; i<params.length; i++)
+        {
+                temp = params[i].split("=");
+                if ( [temp[0]] == sname ) { sval = temp[1]; }
+        }
+        return sval;
+}
+
+function provisionUser(){
+	try{
+	var clusterId = getUrlParam("clusterId");
+	var provisionUrl =getUrlParam("provisionUrl");	
+	var clusterFrame = document.getElementById('cluster_' + clusterId);
+	
+	//Register Session with Container
+	parent.JPMM_MESSAGING.registerSession(clusterId, getUrlParam("serviceId"));
+	 
+	JPMM_MESSAGING_nSession = JPMM_MESSAGING.provision(clusterId, provisionUrl);
+	JPMM_MESSAGING_nSession.on(Nirvana.Observe.START, sessionStarted);	
+	JPMM_MESSAGING_nSession.on(Nirvana.Observe.RECONNECT, function () {
+		clearTimeout(timeoutVar);
+		parent.JPMM_MESSAGING.sessionNotification(Nirvana.Observe.RECONNECT, JPMM_MESSAGING_nSession.getConfig().sessionName);
+	});
+
+	JPMM_MESSAGING_nSession.on(Nirvana.Observe.DISCONNECT, function () {		
+		timeoutVar = setTimeout(sessionDisconnect,45000);//Session Reconnect Timeout if not Connected within 45 seconds, 
+	});
+	JPMM_MESSAGING_nSession.start();
+	sessionTimeout = setTimeout(sessionUnavailTimeout,10000);//Session Timeout if not Connected within 10 seconds, 
+	} catch (err){
+		myLogFunction(err);
+		parent.JPMM_MESSAGING.sessionNotification(Nirvana.Observe.DISCONNECT, clusterId);
+	}
+}
+
+function sessionDisconnect(){	
+	JPMM_MESSAGING_nSession.stop();
+	parent.JPMM_MESSAGING.sessionNotification(Nirvana.Observe.DISCONNECT, JPMM_MESSAGING_nSession.getConfig().sessionName);
+}
+
+function sessionUnavailTimeout(){	
+	JPMM_MESSAGING_nSession.stop();
+	parent.JPMM_MESSAGING.sessionNotification(Nirvana.Observe.DISCONNECT, JPMM_MESSAGING_nSession.getConfig().sessionName);
+}
+
+function getSession() {
+        return JPMM_MESSAGING_nSession;
+}
+
+function sessionStarted(mySession) {
+	JPMM_MESSAGING_sessionStartTime = new Date();
+	clearTimeout(sessionTimeout); //Clears the Session Timeout Timer
+	var clusterId = JPMM_MESSAGING_nSession.getConfig().sessionName;	
+	JPMM_MESSAGING_nSession.on(Nirvana.Observe.DATA, dgHandler);
+	parent.JPMM_MESSAGING.sessionStarted(JPMM_MESSAGING_nSession);
+	
+} 
+
+function dgHandler(event){
+	var eventManager = new JPMM_EVENT_MANAGER();
+	eventManager.pushEvent(event);	
+}
+
+function getSessionState(){
+	var nSessionState = new Object();
+	nSessionState.sessionName = JPMM_MESSAGING_nSession.getConfig().sessionName;
+	nSessionState.startTime = JPMM_MESSAGING_sessionStartTime;
+	nSessionState.status = JPMM_MESSAGING_nSession.getStatus();
+	nSessionState.currentDriver = JPMM_MESSAGING_nSession.getCurrentDriver();
+	nSessionState.currentRealm =  JPMM_MESSAGING_nSession.getCurrentRealm();
+	
+	return nSessionState;
+}
+
+</script>
+</head>
+<body onload="provisionUser()" >
+</body>
+</html>

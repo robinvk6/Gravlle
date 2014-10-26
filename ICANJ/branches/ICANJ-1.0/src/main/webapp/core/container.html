@@ -1,0 +1,30 @@
+<html>
+<head>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/json/json2.js"></script>
+<script type="text/javascript" src="js/nirvana.js"></script>
+<script type="text/javascript" src="js/coreservices.js"></script>
+<script>
+/* var myVar=setInterval(currentObjects,8000); */
+
+function currentObjects(){
+	
+	console.log("**************** NEW STATUS ************************"); 
+	console.log(JSON.stringify(JPMM_MESSAGING.clusterToSessionObjects));
+	console.log(JSON.stringify(JPMM_MESSAGING.srvObjects));
+	console.log(JSON.stringify(JPMM_MESSAGING.dgObjects));
+	console.log(JSON.stringify(JPMM_MESSAGING.serviceLocateObjects)); 
+	console.log(JSON.stringify(JPMM_MESSAGING.connectCallback)); 
+	console.log("*******************************************************"); 
+}
+</script>
+
+</head>
+<body>
+<!-- <iframe id="sample_app1" name ="sample_app1" src="App.html" width="100%" height="100%"></iframe> -->
+<iframe style="width:100%;height:100%;overflow:auto" name="myiframe2" id="myiframe2" src="app1.html">IFrame is not supported</iframe>
+<!-- <iframe id="sample_app2" name ="sample_app2" src="app2.html" width="45%" height="250px" style='float: left'></iframe> -->
+<div id='connections' style='display:none'>
+</div>
+</body>
+</html>

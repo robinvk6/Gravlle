@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="windows-1252">
+<style>
+.connection {
+	width: 150px;
+	height: 100px;
+}
+</style>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/json/json2.js"></script>
+<script type="text/javascript" src="js/coreservices.js"></script>
+<script type="text/javascript" src="js/nirvana.js"></script>
+<script type='text/javascript'>
+
+function sessionStarted(mySession) {
+$('body').css('background-color', 'green');
+
+mySession.on(Nirvana.Observe.RECONNECT, function () {
+	console.log("Client 2 Reconencted")
+});
+
+mySession.on(Nirvana.Observe.DISCONNECT, function () {
+	console.log("Disconnected 2. Reconnecting...");
+});
+
+          // Create a Channel object:
+        var myChannel = mySession.getChannel("/jpmm/core/services/modules/healthcheck/topic");
+		console.log(myChannel);
+		
+		function myEventHandler(event) {
+			var clusterId = event.getSession().getConfig().sessionName;
+		    //console.log(JSON.stringify(event));
+		    var dictionary = event.getDictionary();
+		    document.getElementById(clusterId).innerHTML ="Received event on Client at : \n" +new Date().toTimeString() +" --"+clusterId+"--" + event.getTag() +" -- "+ event.getEID()+ "  -- Event send by server @ "+ event.getData();
+
+		}
+		
+
+        // Assign a handler function for Universal Messaging Events received on the Channel, then subscribe:
+       
+        myChannel.on(Nirvana.Observe.DATA, myEventHandler);
+        myChannel.subscribe();
+        console.log("Subscribed to channel" + myChannel);
+
+} 
+
+function connect(){
+	//parent.connectService('Sales1logger', sessionStarted);
+	
+	
+	Core.connectService({
+		serviceId:'dq',
+		sessionCallbackFn:sessionStarted,
+		reconnectHandlerFn:sessionStarted,
+		disconnectHandlerFn:sessionStarted
+	});
+}
+
+</script>
+</head>
+<body>
+
+	<input type='button' value='create' onclick='connect();' />
+	<input type="text" id="serviceIdField" value="dq">
+	<div id='connections'></div>
+	<h4>DEV Console</h4>
+	<div id='DEV-nam-a'></div>
+	<h4>SIT Console</h4>
+	<div id='SIT-nam-a'></div>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Family Signup</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<jsp:include page="/WEB-INF/views/Core/anonHeader.jsp">
+			<jsp:param name="name" value="sos" />
+		</jsp:include>
+
+
+	</head>
+	<body>
+
+		<div class="container span6 offset4">
+			<div class="page-header">
+				<h1>Family Registration</h1>
+			</div>
+
+			<c:if test="${not empty alert}">
+				<div class="alert ${alert.cssAlertClass}" id="errorBox">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					${alert.message}
+				</div>
+			</c:if>
+
+			<form class="form-horizontal" id="registrationForm" name="registrationForm"
+						action="validate" method="post">
+				<div class="control-group">
+					<label class="control-label" id="reg-phone-label">Enter Phone Number </label>
+					<div class="controls">
+						<input type="text" name="phone" class="input-medium large-text" maxlength="12"
+									 placeholder="enter phone number" size="12" required
+									 data-pattern="^(\([2-9]|[2-9])(\d{2}|\d{2}\))(-|.|\s)?\d{3}(-|.|\s)?\d{4}$"
+									 id="reg-phone">
+						<span class="help-block"></span>
+					</div>
+				</div>
+
+				<div class="control-group">
+
+
+					<div class="modal-footer">
+						<button type="submit" class="btn">Register Family</button>
+
+						<a href="/" type="button" class="btn btn-primary pull-left">Go Back</a>
+					</div>
+				</div>
+			</form>
+		</div>
+		<jsp:include page="/WEB-INF/views/Core/anonFooter.jsp">
+			<jsp:param name="name" value="sos" />
+		</jsp:include>
+		<script type="text/javascript" src="/resources/js/jquery.maskedinput.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+
+				$("#reg-phone").mask("(999) 999-9999");
+
+				$('#registrationForm').validate({
+					onKeyup : true,
+					eachValidField : function() {
+						$(this).closest('div.control-group').removeClass('error').addClass('success');
+					},
+					eachInvalidField : function() {
+						$(this).closest('div.control-group').removeClass('success').addClass('error');
+					}
+				});
+
+
+			});
+		</script>
+	</body>
+</html>

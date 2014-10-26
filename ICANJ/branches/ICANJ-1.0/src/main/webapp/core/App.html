@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="resources/css/bootstrap.css" rel="stylesheet" media="screen">
+<link href="resources/css/bootstrap-responsive.css" rel="stylesheet"
+	media="screen">
+
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/json/json2.js"></script>
+<script type="text/javascript" src="js/nirvana.js"></script>
+
+<script type="text/javascript">
+
+var sessionDQ = null;
+var sessionS1 =null;
+
+function sessCallback(nsession){
+	$('#logConsole').append("Session obtained for " +app + " nsession object: " +JSON.stringify(nsession.getConfig())+ "</br>");
+	if(app=='dq'){	
+		sessionDQ = nsession;
+		sessionStarted(nsession);
+	}else{	
+		sessionS1 = nsession;
+		sessionStarted2(nsession);	
+	}
+}
+
+	function sessionStarted(mySession) {
+		$('#logConsole').append("Session obtained for " + " nsession object: " +JSON.stringify(mySession.getConfig())+ "</br>");
+		
+		$('#logConsole').append("DQ subscribed to Datagroup Queue "+ "</br>");
+		mySession
+		.getChannel("/jpmm/core/application/sampleapp/topicDG1")
+		.subscribe()
+		.publish(Nirvana.createEvent())
+		.unsubscribe();
+		
+		
+		
+		// Create a Channel object:
+		var myChannel = mySession
+				.getChannel("/jpmm/core/application/sampleapp/topic1");
+		$('#logConsole').append("DQ subscribed to Channel " + myChannel.getName()+ "</br>");
+		var myChannel2 = mySession
+				.getChannel("/jpmm/core/application/sampleapp/topic2");
+		$('#logConsole').append("DQ subscribed to Channel " + myChannel2.getName()+ "</br>");
+
+		//console.log(myChannel);
+		
+		if(myChannel.isSubscribed() ){
+			myChannel.unsubscribe();	
+		}
+		
+		if(myChannel2.isSubscribed() ){
+			myChannel2.unsubscribe();	
+		}
+
+		var count = 0;
+		function myEventHandler(event) {
+			if (count >= 20) {
+				$('#result').empty();
+				count = 0;
+			}
+			count++;
+			var clusterId = event.getSession().getConfig().sessionName;
+			////console.log(JSON.stringify(event));
+			var dictionary = event.getDictionary();
+			$('#result').append(
+					event.getTag() + " " + event.getEID() + " | Data "
+							+ event.getData() + "</br>");
+
+		}
+
+		var count2 = 0;
+		function myEventHandler2(event) {
+			if (count2 >= 20) {
+				$('#topicresult2').empty();
+				count2 = 0;
+			}
+			count2++;
+			var clusterId = event.getSession().getConfig().sessionName;
+			////console.log(JSON.stringify(event));
+			var dictionary = event.getDictionary();
+			$('#topicresult2').append(
+					event.getTag() + " " + event.getEID() + " | Data "
+							+ event.getData() + "</br>");
+
+		}
+
+		// Assign a handler function for Universal Messaging Events received on the Channel, then subscribe:
+
+		myChannel.on(Nirvana.Observe.DATA, myEventHandler);
+		myChannel.subscribe();
+		myChannel2.on(Nirvana.Observe.DATA, myEventHandler2);
+		myChannel2.subscribe();
+	
+	}
+	
+	function notification(type, sessionName){
+		$('#logConsole').append("Session Notification : type: "+ type +"  Session Name: "+ sessionName);
+		if(type==4){
+				
+			sessionDQ
+			.getChannel("/jpmm/core/application/sampleapp/topicDG1")
+			.subscribe()
+			.publish(Nirvana.createEvent())
+			.unsubscribe();	
+			
+			sessionS1
+			.getChannel("/jpmm/core/application/sampleapp/topicDG1")
+			.subscribe()
+			.publish(Nirvana.createEvent())
+			.unsubscribe();	
+		}
+	}
+	
+	Nirvana.Utils.Logger.setLogger(myLogFunction);
+
+	function myLogFunction(debugMessage) {
+		console.log(debugMessage);
+		}
+
+	function connect() {
+		var mySession = Nirvana.createSession({
+			realms 			: [ "https://na-messaging3-ub.jpmorgan.com" ], // this can be an array of realms
+			debugLevel 		: 1, // 1-9 (1 = noisy, 8 = severe, 9 = default = off)
+			sessionTimeoutMs	: 10000,
+			enableDataStreams	: false,
+			username : "r512276_184fe5e1-2b50-4c8e-93d6-f7589cb94481",
+			drivers			: [ // an array of transport drivers in preferred order:
+				//Nirvana.Driver.WEBSOCKET,
+			       			 Nirvana.Driver.IFRAME_STREAMING_POSTMESSAGE,
+			       	        Nirvana.Driver.EVENTSOURCE_STREAMING_POSTMESSAGE,
+			       	        Nirvana.Driver.XHR_LONGPOLL_CORS,
+			       	        Nirvana.Driver.XHR_LONGPOLL_POSTMESSAGE,
+			       	        Nirvana.Driver.JSONP_LONGPOLL
+			]
+		});		
+		
+		mySession.on(Nirvana.Observe.START, sessionStarted);
+
+		// And now, start the Session:
+
+		mySession.start();
+
+	}
+	
+	var dgresult1Count = 0;
+	function dataGroupCallbackFn(event){
+		if (dgresult1Count >= 10) {
+			$('#dgresult1').empty();
+			dgresult1Count = 0;
+		}
+		dgresult1Count++;
+		$('#dgresult1').append(
+				event.getTag() + " " + event.getEID() + " | Data Group Event "
+						+ event.getData() + "</br>");
+	}
+	
+	var dgresult2Count = 0;
+	function dataGroupCallbackFn2(event){
+		if (dgresult2Count >= 10) {
+			$('#dgresult2').empty();
+			dgresult2Count = 0;
+		}
+		dgresult2Count++;
+		$('#dgresult2').append(
+				event.getTag() + " " + event.getEID() + " | Data Group Event "
+						+ event.getData() + "</br>");
+	}
+
+	function sessionStarted2(mySession) {
+		
+		var myChannel = mySession
+				.getChannel("/jpmm/core/application/sampleapp/topic1");
+		var myChannel2 = mySession
+				.getChannel("/jpmm/core/application/sampleapp/topic2");
+		//console.log(myChannel);
+		
+		$('#logConsole').append("Sales1Logger subscribed to Channel " + myChannel.getName()+ "</br>");
+		$('#logConsole').append("Sales1Logger subscribed to Channel " + myChannel2.getName()+ "</br>");
+
+		var count = 0;
+		function myEventHandler(event) {
+			if (count >= 20) {
+				$('#2result').empty();
+				count = 0;
+			}
+			count++;
+			var clusterId = event.getSession().getConfig().sessionName;
+			////console.log(JSON.stringify(event));
+			var dictionary = event.getDictionary();
+			$('#2result').append(
+					event.getTag() + " " + event.getEID() + " | Data "
+							+ event.getData() + "</br>");
+
+		}
+
+		var count2 = 0;
+		function myEventHandler2(event) {
+			if (count2 >= 20) {
+				$('#2topicresult2').empty();
+				count2 = 0;
+			}
+			count2++;
+			var clusterId = event.getSession().getConfig().sessionName;
+			////console.log(JSON.stringify(event));
+			var dictionary = event.getDictionary();
+			$('#2topicresult2').append(
+					event.getTag() + " " + event.getEID() + " | Data "
+							+ event.getData() + "</br>");
+
+		}
+
+		// Assign a handler function for Universal Messaging Events received on the Channel, then subscribe:
+
+		myChannel.on(Nirvana.Observe.DATA, myEventHandler);
+		myChannel.subscribe();
+		myChannel2.on(Nirvana.Observe.DATA, myEventHandler2);
+		myChannel2.subscribe();
+
+		mySession
+		.getChannel("/jpmm/core/application/sampleapp/topicDG1")
+		.subscribe()
+		.publish(Nirvana.createEvent())
+		.unsubscribe();
+		
+		$('#logConsole').append("Sales1Logger subscribed to Datagroup Queue "+ "</br>");
+	}
+
+	function connect2() {
+		//parent.connectService('Sales1logger', sessionStarted);
+		parent.getNirvanaSession({
+			serviceId : 'Sales1logger',
+			dataGroupHandler : {
+                callBackFn: dataGroupCallbackFn2,
+                filters: ['IRGold']
+			   },
+			sessionCallbackFn : sessCallback,
+			notificationCallback : notification
+		});
+	}
+</script>
+</head>
+
+<body>
+
+	<div class="container-fluid">
+		<h3>Core Sample JS Application</h3>
+		<div class="row-fluid">
+			<div class="span4">
+
+				<h4>Cluster 1 Console</h4>
+				<div class="row-fluid">
+					<div class="span12">
+						<button class="btn btn-small" type="button" onclick='connect();'>Subscribe
+							to DQ</button>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span12">
+						<div>
+							<h4>Session 1 Channel 1</h4>
+							<pre id="result"
+								style="height: 400px; max-height: 400px; overflow: auto;"></pre>
+						</div>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span12">
+						<div>
+							<h4>Session 1 Channel 2</h4>
+							<pre id="topicresult2"
+								style="height: 400px; max-height: 400px; overflow: auto;"></pre>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="span4">
+				<h4>Cluster 2 Console</h4>
+				<div class="row-fluid">
+					<div class="span12">
+						<button class="btn btn-small" type="button" onclick='connect2();'>Subscribe
+							to SalesOne</button>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span12">
+						<div>
+							<h4>Session 2 Channel 1</h4>
+							<pre id="2result"
+								style="height: 400px; max-height: 400px; overflow: auto;"></pre>
+						</div>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span12">
+						<div>
+							<h4>Session 2 Channel 2</h4>
+							<pre id="2topicresult2"
+								style="height: 400px; max-height: 400px; overflow: auto;"></pre>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="span4">
+				<h4>Datagroup Console</h4>
+
+				<div class="row-fluid">
+					<div class="span12">
+						<div>
+							<h4>Session 1 DG 1</h4>
+							<pre id="dgresult1"
+								style="height: 200px; max-height: 200px; overflow: auto;"></pre>
+						</div>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span12">
+						<div>
+							<h4>Session 1 DG 2</h4>
+							<pre id="dgresult2"
+								style="height: 200px; max-height: 200px; overflow: auto;"></pre>
+						</div>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<h4>Log Console</h4>
+					<pre id="logConsole"
+						style="height: 350px; max-height: 350px; overflow: auto;"></pre>
+				</div>
+			</div>
+			<!--/span-->
+		</div>
+		<!--/row-->
+	</div>
+	<!--/.fluid-container-->
+
+</body>
+</html>
