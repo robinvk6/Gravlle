@@ -1,0 +1,47 @@
+# Retrieve A Category ; method  = GET
+http://localhost:8080/portal/services/category/30
+
+RESPONSE
+{
+    "id": 30,
+    "categoryName": "Test Category30",
+    "childCategories": [
+        {
+            "id": 24,
+            "categoryName": "Test Category24",
+            "childCategories": null,
+            "products": null,
+            "rootCategory": false
+        }
+    ],
+    "products": [        
+        {
+            "productId": 26,
+            "sku": "95fd0abf-6cc3-4b8c-93c0-7dc6e4830a90",
+            "name": "95fd0abf-6cc3-4b8c-93c0-7dc6e4830a90",
+            "shortDescription": "Short DESC",
+            "description": "Test Description",
+            "price": 100,
+            "cost": 120.99,
+            "enabled": true,
+            "weight": 25.11,
+            "taxClassId": 1,
+            "categories": null,
+            "qty": 50,
+            "metaDescription": "Meta Info",
+            "productAttributes": {
+                "key1": "value1"
+            }
+        }
+    ],
+    "rootCategory": true
+}
+
+#Create a Product ; method =POST
+
+Request Headers:
+Accept: application/json
+Content-Type: application/json
+
+
+
