@@ -1,0 +1,94 @@
+
+@media (max-width: 979px) {
+    /*.body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    
+    .viewport {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+    }
+    
+    .viewport .frame {
+        position: absolute;
+        width: 200%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+    }*/
+
+    .menu {
+        height:100%;
+    }
+
+    .menu.collapse {
+        float:left;
+        height: 100% !important;
+        width: auto;
+    }
+
+    .menu.collapse.height {
+        position: relative;
+        height: 0;
+        overflow: hidden;
+        -webkit-transition: height 0.35s ease;
+        -moz-transition: height 0.35s ease;
+        -o-transition: height 0.35s ease;
+        transition: height 0.35s ease;
+    }
+
+    .menu.collapse.width {
+        position: relative;
+        width: 0;
+        overflow: hidden;
+        -webkit-transition: width 0.35s ease;
+        -moz-transition: width 0.35s ease;
+        -o-transition: width 0.35s ease;
+        transition: width 0.35s ease;
+    }
+
+    .menu.collapse.in.width {
+        width: auto;
+    }
+
+    .menu.collapse.in.height {
+        height: auto;
+    }
+
+    .menu.collapse-inner {
+        position: relative;
+        width: 250px;
+        height: 100%;
+    }
+
+    .menu.navbar, .menu.navbar-inner {
+        text-align: center;
+        color: grey;
+        font-size: 1.2em;
+        line-height: 38px;
+    }
+
+    .menu.nav-stacked {
+        padding: 0 10px;
+    }
+
+    /*.view {
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+    }*/
+
+    .view.navbar, .view.navbar-inner, .view.btn-navbar {
+        display: block;
+        float: left;
+    }
+}
