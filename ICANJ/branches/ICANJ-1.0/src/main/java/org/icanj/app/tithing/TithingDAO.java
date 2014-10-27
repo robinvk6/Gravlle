@@ -119,7 +119,13 @@ public class TithingDAO {
 	@Transactional(readOnly = true)
 	public List<Tithe> getTransactionsFamily(String year, String familyId){		
 		return hibernateTemplate.find("from Tithe t where t.familyID = ? and year(t.dateRecieved) = ? order by t.dateRecieved",familyId,new Integer(year));
-	} 
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Transactional(readOnly = true)
+	public List<Tithe> getTransactionsMember(String year, String memberID){		
+		return hibernateTemplate.find("from Tithe t where t.memberID = ? and year(t.dateRecieved) = ? order by t.dateRecieved",memberID,new Integer(year));
+	}
 	
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)

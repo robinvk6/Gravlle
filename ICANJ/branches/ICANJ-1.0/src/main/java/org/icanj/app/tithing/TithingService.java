@@ -242,6 +242,24 @@ public class TithingService {
 			return modelMap;
 	}
 	
+public ModelMap getTransactionsMember(String year, long memberId,ModelMap modelMap) throws Exception{
+	
+	Member m =directoryServiceImpl.getMember(memberId);
+		BigDecimal result = new BigDecimal(0);
+		
+		List<Tithe> tithes = tithingDAO.getTransactionsMember(year, encoder(String.valueOf(memberId)));
+	
+			for(Tithe t:tithes){
+				t.setMemberID(m.getFirstName() + " " + m.getLastName());
+				result = result.add(t.getAmount());
+			}
+			modelMap.addAttribute("tithes",tithes);
+			modelMap.addAttribute("year",year);
+			modelMap.addAttribute("total",result);
+			modelMap.addAttribute("totalcount",tithes.size());
+			return modelMap;
+	}
+	
 	
 	
 	private Date getDatefromString(String date) throws ParseException{

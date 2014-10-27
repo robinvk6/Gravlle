@@ -55,7 +55,7 @@
                  
 
                         <li class="nav-header">Tithe</li>
-                        <li <c:if test="${navSelected == 'MyTithe'}"> class="active" </c:if> ><a href="/Tithe/FamilyTithe"><i class="icon-star"></i> My Tithing Info</a></li>
+                        <li <c:if test="${navSelected == 'MyTithe'}"> class="active" </c:if> ><a href="/Tithe/MyTithe"><i class="icon-star"></i> My Tithing Info</a></li>
                        <li <c:if test="${navSelected == 'RequestACheck'}"> class="active" </c:if> ><a href="/Finance/RequestCheck/"><i class="icon-star"></i> Request a Check</a></li>
                                 <li <c:if test="${navSelected == 'SubmitReceipt'}"> class="active" </c:if> ><a href="/PageNotFound"><i class="icon-star"></i> Submit Receipt</a></li>
                    <%if (isInventoryManager) {%>

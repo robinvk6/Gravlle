@@ -78,7 +78,8 @@ public class DirectoryController {
 			stringBuffer.append("<table class='table table-hover'><h4>Select Member</h4>");
                         model.addAttribute("navSelected", "Directory");
 			for (Member m : members) {
-				stringBuffer.append("<tr><td>" + m.getFirstName() + " " + m.getLastName() + "</td>"
+				Family family = directoryServiceImpl.getFamily(m.getFamilyId());
+				stringBuffer.append("<tr><td>" + m.getFirstName() + " " + m.getLastName() +" ("+family.getAddress().getCity()+", "+family.getAddress().getState()+")"+"</td>"
 								+ "<td><a href='#"+modal+"' type='button'"
 								+ "data-toggle='modal' class='btn btn-small'"
 								+ "onclick='"+function+"(" + m.getMemberId() + ","+ m.getFamilyId()+")'>Select Member</a></td>"

@@ -29,7 +29,7 @@ public class PersonalTitheController {
 	@Autowired
 	private DirectoryService directoryServiceImpl;
 
-	@RequestMapping(value = "/FamilyTithe")
+	@RequestMapping(value = "/MyTithe")
 	public ModelAndView getTitheFamily(Principal principal, HttpServletRequest request) throws Exception {
 		String year = request.getParameter("year");
 		ModelMap modelMap = new ModelMap();
@@ -42,7 +42,7 @@ public class PersonalTitheController {
 			}
 
 			m = directoryServiceImpl.getMemberFromPrincipal(principal.getName());
-			modelMap = tithingService.getTransactionsFamily(year, m.getFamilyId(),modelMap);
+			modelMap = tithingService.getTransactionsMember(year, m.getMemberId(),modelMap);
 
 
 		}catch (NullPointerException e) {
